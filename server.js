@@ -20,12 +20,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-
+app.get('/',(req,res)=>{res.json('smart-brain is running')})
 app.post('/signin',(req,res)=>{signin.handelSignin(req,res,db,bcrypt)});
 app.post('/signup',(req,res)=>{signup.handelSignup(req,res,db,bcrypt)});
 app.post('/imageurl',(req,res)=>{imageurl.handelImgaeurl(req,res)});
 
-app.listen(3002,()=>{
-    console.log("app is running on port 3002")
+app.listen(process.env.PORT,()=>{
+    console.log(`app is running on port${process.env.PORT}`)
 
 })
